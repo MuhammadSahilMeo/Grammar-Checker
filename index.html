@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width,initial-scale=1" />
+     <title>AI Grammar Pro — Grammar Checker</title>
+     <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+     <!-- NAVBAR -->
+     <header class="nav">
+          <div class="nav-inner">
+               <div class="brand" tabindex="0">
+                    <img src="/images/nav-logo.png" class="logo-img" alt="logo image">
+                    <span class="brand-text">AI Grammar Pro</span>
+               </div>
+               <nav class="nav-links" aria-label="Main navigation">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Demo</a>
+                    <button id="demoBtn" class="btn small">Try Demo</button>
+               </nav>
+          </div>
+     </header>
+
+     <!-- MAIN -->
+     <main class="container">
+          <section class="hero">
+               <div class="left-panel">
+                    <h1 class="title">Professional AI Grammar Checker</h1>
+                    <p class="subtitle">Paste your text, click <strong>Check Grammar</strong>, and get a corrected
+                         version with a clear score and error summary.</p>
+
+                    <label for="inputText" class="sr-only">Text to check</label>
+                    <textarea id="inputText" placeholder="Type or paste text here..." rows="9"
+                         aria-label="Text to check"></textarea>
+
+                    <div class="controls">
+                         <button id="checkBtn" class="btn primary">Check Grammar</button>
+                         <button id="clearBtn" class="btn primary">Clear</button>
+                         <button id="toggleHighlightBtn" class="btn primary">Toggle Highlights</button>
+                    </div>
+
+                    <div id="status" class="status" role="status" aria-live="polite"></div>
+               </div>
+
+               <aside class="right-panel" aria-label="Results">
+                    <div class="result-card" id="correctedCard">
+                         <div class="card-header">
+                              <h3>Corrected Output</h3>
+                              <div class="card-actions">
+                                   <button id="copyCorrected" class="icon-btn" title="Copy corrected text">Copy</button>
+                                   <button id="downloadCorrected" class="icon-btn"
+                                        title="Download corrected text">Download</button>
+                              </div>
+                         </div>
+                         <div id="correctedOutput" class="card-body" tabindex="0" aria-live="polite">
+                              <!-- corrected text (with highlighted changes) will appear here -->
+                              <pre class="plain">No results yet. Click "Check Grammar" to begin.</pre>
+                         </div>
+                    </div>
+
+                    <div class="result-card" id="summaryCard">
+                         <div class="card-header">
+                              <h3>Errors Summary</h3>
+                         </div>
+                         <div id="summaryBody" class="card-body small">
+                              <p><strong>Words total:</strong> <span id="wordsTotal">—</span></p>
+                              <p><strong>Words changed:</strong> <span id="wordsChanged">—</span></p>
+                              <p><strong>Sentences changed:</strong> <span id="sentencesChanged">—</span></p>
+                              <div id="changedListContainer"></div>
+                         </div>
+                    </div>
+
+                    <div class="result-card" id="scoreCard">
+                         <div class="card-header">
+                              <h3>Correction Score</h3>
+                         </div>
+                         <div class="card-body center">
+                              <div id="scoreCircle" class="score-circle" aria-hidden="true">—%</div>
+                              <div class="progress-bar" aria-hidden="true">
+                                   <div id="progressFill" class="progress-fill" style="width:0%"></div>
+                              </div>
+                              <p id="scoreText" class="muted">Change rate: —</p>
+                         </div>
+                    </div>
+               </aside>
+          </section>
+     </main>
+
+     <!-- FOOTER -->
+     <footer class="footer">
+          <div class="footer-inner">
+               <div class="footer-left">
+                    <span class="brand-mini"><span class="logo-dot" aria-hidden="true"></span> AI Grammar Pro</span>
+                    <small class="muted">Built By M.Qaswar</small>
+               </div>
+               <div class="footer-right muted">
+                    <small>© <span id="year"></span> AI Grammar Pro</small>
+               </div>
+          </div>
+     </footer>
+
+     <script src="script.js" defer></script>
+</body>
+
+</html>
