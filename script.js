@@ -54,27 +54,23 @@ let highlightsOn = true;
 
 /* ----------------- Gemini API Grammar Correction ----------------- */
 async function fetchCorrectedText(originalText) {
-  const API_KEY = "AIzaSyDJFb1jjEn7Tn1SlShfYPRb8hjVWgiurrw";
-  const MODEL_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-pro:generateContent?key=${API_KEY}`;
-
-  const prompt = `Correct the grammar, punctuation, and sentence structure of the following text while keeping its meaning the same. Return only the corrected version:\n\n${originalText}`;
-
   try {
-    const res = await fetch(MODEL_URL, {
+    const res = await fetch('/api/correct-grammar', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+      body: JSON.stringify({ text: originalText }),
     });
 
-    const data = await res.json();
-    if (data?.candidates?.[0]?.content?.parts?.[0]?.text) {
-      return data.candidates[0].content.parts[0].text.trim();
-    } else {
-      throw new Error("Unexpected Gemini API response.");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || 'Server error');
     }
+
+    const data = await res.json();
+    return data.correctedText;
   } catch (err) {
-    console.error("Error fetching from Gemini API:", err);
-    throw new Error("Failed to fetch from Gemini model.");
+    console.error("Error fetching corrected text:", err);
+    throw new Error("Failed to correct grammar: " + err.message);
   }
 }
 

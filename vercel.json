@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/correct-grammar.js": {
+      "maxDuration": 30
+    }
+  }
+}

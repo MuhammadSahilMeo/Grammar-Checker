@@ -239,6 +239,14 @@ button:focus {
   overflow: auto;
 }
 
+.errors-result {
+  color: var(--muted);
+}
+
+.results {
+  color: var(--purple-800);
+}
+
 .card-body.plain {
   color: var(--muted);
 }
