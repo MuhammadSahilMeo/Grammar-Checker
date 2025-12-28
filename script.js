@@ -114,7 +114,7 @@ async function doCheck() {
     correctedOutputEl.innerHTML = `
       <div class="highlighted">${correctedHtml}</div>
       <hr/>
-      <pre class="plain">${escapeHtml(correctedText)}</pre>
+      <p class="plain">${escapeHtml(correctedText)}</p>
     `;
 
     wordsTotalEl.textContent = wordsTotal;
@@ -154,7 +154,7 @@ function computeSentenceChanges(a, b) {
 checkBtn.addEventListener('click', doCheck);
 clearBtn.addEventListener('click', () => {
   inputEl.value = '';
-  correctedOutputEl.innerHTML = `<pre class="plain">No results yet. Click "Check Grammar" to begin.</pre>`;
+  correctedOutputEl.innerHTML = `<p class="plain">No results yet. Click "Check Grammar" to begin.</p>`;
   wordsTotalEl.textContent = '—';
   wordsChangedEl.textContent = '—';
   sentencesChangedEl.textContent = '—';
